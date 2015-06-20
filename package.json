@@ -2,6 +2,10 @@
   "name": "sofa-alarm",
   "version": "1.0.0",
   "description": "A motion-detection alarm system designed to keep the dog off the goddamned couch",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dansays/sofa-alarm.git"
+  },
   "author": "Dan Budiac",
   "devDependencies": {
     "applescript": "^1.0.0",
