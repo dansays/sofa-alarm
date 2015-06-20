@@ -1,0 +1,11 @@
+{
+  "name": "sofa-alarm",
+  "version": "1.0.0",
+  "description": "A motion-detection alarm system designed to keep the dog off the goddamned couch",
+  "author": "Dan Budiac",
+  "devDependencies": {
+    "applescript": "^1.0.0",
+    "node-hue-api": "^1.0.5",
+    "node-mac": "^0.1.3"
+  }
+}
