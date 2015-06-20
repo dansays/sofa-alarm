@@ -16,6 +16,8 @@ webcam when the bulb changes or is turned off.
 Evocam will monitor a webcam pointed at the sofa. It
 has a motion-detection region that will fire only when
 it is clear that the dog is on the couch, which will
-trigger a recording of my voice, and capture a video.
+trigger a recording of my voice, and capture a video:
+
+<iframe width="420" height="315" src="https://www.youtube.com/embed/GaH4lPxcmxY" frameborder="0" allowfullscreen></iframe>
 
 [1]: http://www.evological.com/evocam.html
