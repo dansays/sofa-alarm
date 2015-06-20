@@ -44,21 +44,24 @@ function checkStatus(status) {
 // Check whether current setting matches the
 // magic color/brightness setting
 function magicSetting(status) {
-	if (status.state.on 		=== false)	return false;
-	if (status.state.bri 		!== 230)		return false;
-	if (status.state.xy[0] 	!== 0.4675)	return false;
-	if (status.state.xy[1] 	!== 0.4142)	return false;
+	if (status.state.on      == false)  return false;
+	if (status.state.bri    !== 230)    return false;
+	if (status.state.xy[0]  !== 0.4675)	return false;
+	if (status.state.xy[1]  !== 0.4142) return false;
 	return true;
 }
 
 // Arm the camera
 function armCamera() {
-	camArmed = true;
-	//var cmd = 'tell application "Macintosh HD:Applications:EvoCam.app" to open "Drobo:SofaCam:SofaCam.evocamsettings"';
 	var cmd = 'tell application "Finder" to open "Drobo:SofaCam:SofaCam.evocamsettings"';
+	camArmed = true;
 	Applescript.execString(cmd, function(err, rtn) {
-		if (err) { say("Cannot arm SofaCam dammit"); console.log(err); }
-		else say("SofaCam is now armed");
+		if (err) {
+			say("Cannot arm SofaCam dammit");
+			console.log(err);
+		} else {
+			say("SofaCam is now armed");
+		}
 	});
 }
 
@@ -67,8 +70,12 @@ function disarmCamera() {
 	camArmed = false;
 	var cmd = 'quit app "Evocam"';
 	Applescript.execString(cmd, function(err, rtn) {
-		if (err) { say("Cannot disarm SofaCam"); console.log(err); }
-		else say("SofaCam is now disarmed");
+		if (err) {
+			say("Cannot disarm SofaCam");
+			console.log(err);
+		} else {
+			say("SofaCam is now disarmed");
+		}
 	});
 }
 
