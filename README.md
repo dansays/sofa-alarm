@@ -6,7 +6,7 @@ sofa in our absence. It consists of the following parts:
 
 1. [EvoCam][1], a webcam application that features
    motion detection and is highly scriptable
-2. A node app that monitors a designated Phillips
+2. A node app that monitors a designated Philips
    Hue bulb for a "magic" brightness and temperature.
 
 When the Hue bulb changes to the magic setting, the
