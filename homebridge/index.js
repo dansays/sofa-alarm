@@ -1,7 +1,7 @@
 var Service;
 var Characteristic;
 
-var request = require('request');
+var applescript = require('applescript');
 
 
 module.exports = function(homebridge) {
@@ -17,11 +17,24 @@ function SofaCamAccessory(log, config) {
 }
 
 SofaCamAccessory.prototype.setState = function(powerOn, callback) {
+	var cmd;
+
 	if (powerOn) {
+		cmd = 'tell application "Finder" to open "Drobo:SofaCam:SofaCam.evocamsettings"';
 		this.log('Setting SofaCam to on');
 	} else {
+		cmd = 'quit app "Evocam"';
 		this.log('Setting SofaCam to off');
 	}
+
+	Applescript.execString(cmd, function(err, rtn) {
+		if (err) {
+			this.log('Error: ' + err);
+			callback(err || new Error('Error arming SofaCam'));
+		} else {
+			callback(null);
+		}
+	});
 }
 
 SofaCamAccessory.prototype.getServices = function() {
