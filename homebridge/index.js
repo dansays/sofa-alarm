@@ -13,28 +13,28 @@ module.exports = function(homebridge) {
 function SofaCamAccessory(log, config) {
 	this.log = log;
 	this.name = config['name'];
+	this.scriptPath = config['scriptPath'] || 'Drobo:SofaCam:SofaCam.evocamsettings';
 	this.service = 'Switch';
 }
 
 SofaCamAccessory.prototype.setState = function(powerOn, callback) {
-	var cmd;
-
 	if (powerOn) {
-		cmd = 'tell application "Finder" to open "Drobo:SofaCam:SofaCam.evocamsettings"';
-		this.log('Setting SofaCam to on');
+		applescript.execString('tell application "Finder" to open "' + this.scriptPath + '"', done);
 	} else {
-		cmd = 'quit app "Evocam"';
-		this.log('Setting SofaCam to off');
+		applescript.execString('quit app "Evocam"', done);
 	}
 
-	Applescript.execString(cmd, function(err, rtn) {
+	function done(err, rtn) {
+		var state = powerOn ? 'on' : 'off';
+
 		if (err) {
 			this.log('Error: ' + err);
-			callback(err || new Error('Error arming SofaCam'));
+			callback(err || new Error('Error setting SofaCam to ' + state));
 		} else {
+			this.log('Set SofaCam to ' + state);
 			callback(null);
 		}
-	});
+	}
 }
 
 SofaCamAccessory.prototype.getServices = function() {
