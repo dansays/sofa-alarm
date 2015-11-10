@@ -1,0 +1,16 @@
+{
+  "name": "homebridge-sofa-alarm",
+  "version": "0.0.1",
+  "description": "A motion-detection alarm system designed to keep the dog off the goddamned couch",
+  "license": "ISC",
+  "keywords": [
+    "homebridge-plugin"
+  ],
+  "engines": {
+    "node": ">=0.12.0",
+    "homebridge": ">=0.2.0"
+  },
+  "dependencies": {
+    "applescript": "^1.0.0"
+  }
+}
