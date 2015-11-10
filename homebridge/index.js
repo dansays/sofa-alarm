@@ -18,6 +18,8 @@ function SofaCamAccessory(log, config) {
 }
 
 SofaCamAccessory.prototype.setState = function(powerOn, callback) {
+	var accessory = this;
+
 	if (powerOn) {
 		applescript.execString('tell application "Finder" to open "' + this.scriptPath + '"', done);
 	} else {
@@ -28,10 +30,10 @@ SofaCamAccessory.prototype.setState = function(powerOn, callback) {
 		var state = powerOn ? 'on' : 'off';
 
 		if (err) {
-			this.log('Error: ' + err);
+			accessory.log('Error: ' + err);
 			callback(err || new Error('Error setting SofaCam to ' + state));
 		} else {
-			this.log('Set SofaCam to ' + state);
+			accessory.log('Set SofaCam to ' + state);
 			callback(null);
 		}
 	}
